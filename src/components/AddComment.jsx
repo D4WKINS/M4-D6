@@ -25,6 +25,16 @@ class AddComment extends Component {
             if (response.ok) {
                 // the comment has been sent succesfully!!
                 alert('Comment was sent!')
+                
+                let commentRes = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${this.props.asin}`,{
+                    headers: {
+                        'Content-type': 'application/json',
+                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGI3OWY5NTgxNmI1YjAwMTU5NDA3NDAiLCJpYXQiOjE2MjI2NDY2NzcsImV4cCI6MTYyMzg1NjI3N30.y-rBwB5WAQOWBvWrLlAgTQUrbGulxd2M6cWH3VLyGLw'
+                    }
+                })
+
+                let newComments = await commentRes.json()
+                    this.props.getComments(newComments)
             } else {
                 console.log('error')
                 alert('something went wrong')

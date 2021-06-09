@@ -10,6 +10,11 @@ class CommentArea extends Component {
 
     
     componentDidMount = async () => {
+        this.fetchBook()
+       
+    }
+    
+    fetchBook = async () =>{
         try{
             let response = await fetch(" https://striveschool-api.herokuapp.com/api/comments/" + this.props.asin,  {
                 headers: {
@@ -18,7 +23,7 @@ class CommentArea extends Component {
             if(response.ok){
             let comments = await response.json()
             this.setState({comments:comments})
-            console.log(this.state.comments)
+            // console.log(this.state.comments)
             }
 
             
@@ -27,30 +32,34 @@ class CommentArea extends Component {
         console.log("We Have A Problem", err )
     }
     }
-    
-    componentDidUpdate(){
+
+    componentDidUpdate(prevProps,prevState){
+        console.log(prevProps)
+        console.log(this.props.asin)
         
+        if (prevProps.asin !== this.props.asin) {
+            this.fetchBook()
+            console.log("fetch")
+        }
     }
 
+    getNewComments=(comments)=> {
+        this.setState({comments:comments})
+    }
 
     render(){
         return (
             <>
-            
+
             <div>
                  {/* {this.state.isLoading && <Loading />}
                  {this.state.isError && <Error />} */}
                  <CommentList commentsToShow={this.state.comments} />
-                 <AddComment asin={this.props.asin} />
-                
-                
+                 <AddComment comments={this.state.comments} getComments={this.getNewComments} asin={this.props.asin} />
             </div>
-
             </>
+            
           );
         }
-    
 }
-
- 
 export default CommentArea;
