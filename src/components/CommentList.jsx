@@ -4,11 +4,13 @@ import SingleComment from './SingleComment'
 
 
 const CommentList = ({ commentsToShow }) => (
+  
+
     <ListGroup style={{ color: 'black' }}>
         {
             console.log(commentsToShow),
             commentsToShow.map(comment => (
-                <SingleComment  comment={comment} key={comment._id} />
+                <SingleComment getComments={commentsToShow} comment={comment} key={comment._id} />
             ))
         }
     </ListGroup>
