@@ -3,8 +3,8 @@ import MySign from './components/WarningSign'
 import MyNav from './components/MyNav'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import fantasy from './fantasy.json'
-import MyJumbo from './components/MyJumbo'
-import {BrowserRouter as Router,Route} from'react-router-dom'
+// import MyJumbo from './components/MyJumbo'
+// import {BrowserRouter as Router,Route} from'react-router-dom'
 
 import MyBadge from './components/MyBadge';
 import BookList from './components/BookList';

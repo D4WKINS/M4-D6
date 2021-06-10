@@ -4,7 +4,7 @@ import CommentList from './CommentList'
 
 class CommentArea extends Component {
     state ={
-        comments:[]
+        comments: null
         // isLoading: true,
         // isError: false
     }
@@ -50,6 +50,11 @@ class CommentArea extends Component {
         this.setState({comments:comments})
     }
 
+    
+    getPrevComments =(comments)=>{
+        console.log(comments)
+        this.setState({comments:comments})
+    }
 
     render(){
         return (
@@ -58,7 +63,7 @@ class CommentArea extends Component {
             <div>
                  {/* {this.state.isLoading && <Loading />}
                  {this.state.isError && <Error />} */}
-                 <CommentList commentsToShow={this.state.comments} />
+                 <CommentList reload={() => this.fetchBook()} comments={this.state.comments} />
                  <AddComment comments={this.state.comments} getComments={this.getNewComments} asin={this.props.asin} />
             </div>
             </>
