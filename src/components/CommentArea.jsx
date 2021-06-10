@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import AddComment from './AddComment'
 import CommentList from './CommentList'
+
 class CommentArea extends Component {
     state ={
         comments:[]
@@ -22,8 +23,9 @@ class CommentArea extends Component {
             }}) 
             if(response.ok){
             let comments = await response.json()
+            console.log(comments)
             this.setState({comments:comments})
-            // console.log(this.state.comments)
+           
             }
 
             
@@ -33,7 +35,7 @@ class CommentArea extends Component {
     }
     }
 
-    componentDidUpdate(prevProps,prevState){
+    componentDidUpdate(prevProps){
         console.log(prevProps)
         console.log(this.props.asin)
         
@@ -44,6 +46,7 @@ class CommentArea extends Component {
     }
 
     getNewComments=(comments)=> {
+        console.log(comments)
         this.setState({comments:comments})
     }
 

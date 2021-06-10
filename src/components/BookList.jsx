@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Row, Col, Container,Form,FormControl} from "react-bootstrap";
 import SingleBook from './SingleBook'
 
@@ -8,6 +8,14 @@ const BookList = (props)=>{
 //   state = { 
 //     query: "",
 //  }
+
+
+// useEffect(()=>{DONT NEED THIS
+// console.log("RE-RENDER")
+// },[query])
+
+
+
     return (
       <Container>
           <Form className="d-flex ms-auto">
