@@ -51,7 +51,7 @@ class CommentArea extends Component {
     }
 
     
-    getPrevComments =(comments)=>{
+    getPrevComments = (comments) =>{
         console.log(comments)
         this.setState({comments:comments})
     }
